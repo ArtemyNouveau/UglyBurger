@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c7c9f928-74b7-4ec6-a97a-6b8f788c58a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Burger/Burger.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Burger/Burger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Burger/Burger.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Burger/Burger.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585591914254</updated>
       <workItem from="1585591915932" duration="241000" />
-      <workItem from="1585649191995" duration="11521000" />
+      <workItem from="1585649191995" duration="15933000" />
     </task>
     <servers />
   </component>
@@ -95,5 +96,9 @@
       <screen x="0" y="0" width="1920" height="1018" />
     </state>
     <state width="936" height="274" key="GridCell.Tab.0.right/0.0.1920.1018@0.0.1920.1018" timestamp="1585654564481" />
+    <state x="143" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585661245465">
+      <screen x="0" y="0" width="1920" height="1018" />
+    </state>
+    <state x="143" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1018@0.0.1920.1018" timestamp="1585661245465" />
   </component>
 </project>
