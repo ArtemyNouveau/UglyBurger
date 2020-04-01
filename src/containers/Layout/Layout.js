@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from "react";
-import ToolBar from "../Navigation/ToolBar/ToolBar";
-import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
+import ToolBar from "../../components/Navigation/ToolBar/ToolBar";
+import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 
 import styles from './Layout.module.css'
 
