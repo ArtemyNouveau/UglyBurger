@@ -26,7 +26,9 @@ class BurgerBuilder extends Component {
 
     orderSwitcher = () => {
         this.setState({purchasing: !this.state.purchasing})
-    }
+    };
+
+    purchaseContinue = () => {alert('done')};
 
     updatePurchase = (ingredients) => {
         const purchasable = Object.keys({...ingredients}).some((ingridient) => (ingredients[ingridient] > 0));
@@ -66,7 +68,12 @@ class BurgerBuilder extends Component {
         return (
             <Fragment>
                 <Modal show={this.state.purchasing} closeModal={this.orderSwitcher}>
-                    <OrderSummary ingridients={this.state.ingridients}/>
+                    <OrderSummary
+                        totalPrice={this.state.totalPrice}
+                        ingridients={this.state.ingridients}
+                        purchaseCancel={this.orderSwitcher}
+                        purchaseContinue={this.purchaseContinue}
+                    />
                 </Modal>
                 <Burger ingridients={this.state.ingridients}/>
                 <BuildControls
