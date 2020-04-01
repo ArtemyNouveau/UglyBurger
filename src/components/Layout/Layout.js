@@ -1,15 +1,32 @@
-import React, {Fragment} from "react";
+import React, {Component, Fragment} from "react";
 import ToolBar from "../Navigation/ToolBar/ToolBar";
+import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
 import styles from './Layout.module.css'
 
-const layaout = (props) => (
-    <Fragment>
-        <ToolBar/>
-        <main className={styles.content}>
-            {props.children}
-        </main>
-    </Fragment>
-);
+class Layaout extends Component {
+    state = {
+        showSideDrawer: false
+    };
 
-export default layaout
+    sideDrawerSwitcher = () => {
+        this.setState((prevState) => ({showSideDrawer: !prevState.showSideDrawer}))
+    };
+
+    render() {
+        return (
+            <Fragment>
+                <SideDrawer
+                    show={this.state.showSideDrawer}
+                    switchDrawer={this.sideDrawerSwitcher}/>
+                <ToolBar switchDrawer={this.sideDrawerSwitcher}/>
+                <main className={styles.content}>
+                    {this.props.children}
+                </main>
+            </Fragment>
+
+        )
+    }
+}
+
+export default Layaout

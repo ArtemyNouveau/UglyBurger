@@ -25,7 +25,7 @@ class BurgerBuilder extends Component {
     };
 
     orderSwitcher = () => {
-        this.setState({purchasing: !this.state.purchasing})
+        this.setState((prevState) => ({purchasing: !prevState.purchasing}))
     };
 
     purchaseContinue = () => {alert('done')};

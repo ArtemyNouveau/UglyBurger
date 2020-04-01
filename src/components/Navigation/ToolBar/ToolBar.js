@@ -1,20 +1,21 @@
 import React, {Fragment} from "react";
 import Logo from "../../Logo/Logo";
+import NavigationItems from "../NavigationItems/NavigationItems";
+import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 
 import styles from './ToolBar.module.css'
-console.log(styles);
 
 const toolBar = (props) => (
     <Fragment>
         <div className={styles.ToolBarSpan}/>
         <header className={styles.ToolBar}>
-            <div>Menu</div>
+            <DrawerToggle toggle={props.switchDrawer}>Menu</DrawerToggle>
             <Logo/>
-            <nav>
-                ...
+            <nav className={styles.DesktopOnly}>
+                <NavigationItems/>
             </nav>
         </header>
     </Fragment>
-)
+);
 
 export default toolBar
