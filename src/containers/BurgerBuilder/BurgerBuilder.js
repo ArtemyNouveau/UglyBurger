@@ -19,7 +19,7 @@ class BurgerBuilder extends Component {
     state = {
         ingridients: null,
         totalPrice: 3,
-        purchasable: false,
+        purchasable: true,
         purchasing: false,
         loading: true,
         error: null
@@ -105,7 +105,7 @@ class BurgerBuilder extends Component {
             <Fragment>
                 <Modal show={this.state.purchasing} closeModal={this.orderSwitcher}>
                     {
-                        this.state.loading || !this.state.error ?
+                        this.state.loading || this.state.error ?
                             <Spinner/> :
                             <OrderSummary
                                 totalPrice={this.state.totalPrice}
