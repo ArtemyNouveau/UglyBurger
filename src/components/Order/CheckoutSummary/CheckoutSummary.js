@@ -11,8 +11,8 @@ const checkoutSummary = (props) => {
             <div className={styles.Burger}>
                 <Burger ingridients={props.ingridients}/>
             </div>
-            <Button btnType="Danger">Cancel</Button>
-            <Button btnType="Success">Continue</Button>
+            <Button btnType="Danger" clicked={props.checkoutCancel}>Cancel</Button>
+            <Button btnType="Success" clicked={props.checkoutContinue}>Continue</Button>
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import React from "react";
-import styles from './Burger.module.css'
-
 import BurgerIngredient from "./Ingridients/Ingridients";
+// import {withRouter} from 'react-router-dom';
+
+import styles from './Burger.module.css'
 
 const burger = (props) => {
     const parsedIngredients = Object.keys(props.ingridients).map((ingridient) => (
