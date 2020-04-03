@@ -5,7 +5,6 @@ import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../HOC/withErrorHandler/withErrorHandler";
-
 import axios from '../../axios-orders';
 
 const INGRIDIENT_PRICES = {
@@ -40,30 +39,30 @@ class BurgerBuilder extends Component {
     };
 
     purchaseContinue = () => {
-        this.setState({loading: true});
-        const order = {
-            ingridients: this.state.ingridients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'text',
-                address: {
-                    country: 'USA',
-                    town: '123124'
-                },
-                email: 'qwerty@mail.com'
-            },
-            delivery: 'fastest'
-        };
-
-        axios.post('/orders.json', order)
-            .then((response) => {
-                this.setState({loading: false, purchasing: false});
-                console.log(response);
-            })
-            .catch((err) => {
-                this.setState({loading: false, purchasing: false});
-                alert(err)
-            });
+        // this.setState({loading: true});
+        // const order = {
+        //     ingridients: this.state.ingridients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: 'text',
+        //         address: {
+        //             country: 'USA',
+        //             town: '123124'
+        //         },
+        //         email: 'qwerty@mail.com'
+        //     },
+        //     delivery: 'fastest'
+        // };
+        //
+        // axios.post('/orders.json', order)
+        //     .then((response) => {
+        //         this.setState({loading: false, purchasing: false});
+        //         console.log(response);
+        //     })
+        //     .catch((err) => {
+        //         this.setState({loading: false, purchasing: false});
+        //         alert(err)
+        //     });
 
         const queryParams = [];
         for (let i in this.state.ingridients)

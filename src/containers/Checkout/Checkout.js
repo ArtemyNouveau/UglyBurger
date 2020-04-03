@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
+import {Route} from "react-router-dom"
+import ContactData from "./ContactData/ContactData";
 
 class Checkout extends Component{
     //TODO ingridients fetch
@@ -12,7 +14,7 @@ class Checkout extends Component{
         }
     };
 
-    componentWillMount() {
+    componentDidMount() {
         const query = new URLSearchParams(this.props.location.search)
         const ingredients = {};
 
@@ -39,6 +41,13 @@ class Checkout extends Component{
                     checkoutCancel={this.checkoutCancel}
                     checkoutContinue={this.checkoutContinue}
                 />
+                <Route
+                    path={this.props.match.path + "/contact-data"}
+                    render={(props) => (<ContactData
+                        ingridients={this.state.ingridients}
+                        {...props}
+                    />)}
+                    />
             </div>
         )
     }
