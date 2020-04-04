@@ -2,16 +2,53 @@ import React, {Component, Fragment} from "react";
 import Button from "../../../components/UI/Button/Button";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import axios from "../../../axios-orders";
+import Input from "../../../components/UI/Input/input";
 
 import styles from './ContactData.module.css'
 
 class ContactData extends Component {
     state = {
-        name: '',
-        email: '',
-        address: {
-            country: '',
-            town: ''
+        orderForm: {
+            name: {
+                value: '',
+                label: "name",
+                inputType: 'input',
+                elementConfig: {
+                    type: "text",
+                    name: "name",
+                    placeholder: "your name"
+                }
+            },
+            email: {
+                value: '',
+                label: "email",
+                inputType: 'input',
+                elementConfig: {
+                    type: "text",
+                    name: "email",
+                    placeholder: "your email"
+                }
+            },
+            country: {
+                value: '',
+                label: "country",
+                inputType: 'input',
+                elementConfig: {
+                    type: "text",
+                    name: "country",
+                    placeholder: "your country"
+                }
+            },
+            town: {
+                value: '',
+                label: "town",
+                inputType: 'input',
+                elementConfig: {
+                    type: "text",
+                    name: "town",
+                    placeholder: "your town"
+                }
+            }
         },
         loading: false
     };
@@ -47,6 +84,13 @@ class ContactData extends Component {
     };
 
     render() {
+        const inputs = Object.keys(this.state.orderForm).map((key, i) => (
+            <Input key={key+i}
+                   id={key+'_'+i}
+                   label={this.state.orderForm[key].label}
+                   value={this.state.orderForm[key].value}
+                   elementConfig={this.state.orderForm[key].elementConfig}/>
+        ));
         return (
             <Fragment>
                 {this.state.loading ?
@@ -54,10 +98,7 @@ class ContactData extends Component {
                     <div className={styles.ContactData}>
                         <h4>Enter your contact data</h4>
                         <form>
-                            <input type="text" name="name" placeholder="your name"/>
-                            <input type="email" name="email" placeholder="your email"/>
-                            <input type="text" name="country" placeholder="your country"/>
-                            <input type="text" name="town" placeholder="your town"/>
+                            {inputs}
                             <Button btnType="Success" clicked={this.orderHandler}>Order</Button>
                         </form>
                     </div>

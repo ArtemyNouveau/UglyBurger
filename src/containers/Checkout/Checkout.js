@@ -4,7 +4,6 @@ import {Route} from "react-router-dom"
 import ContactData from "./ContactData/ContactData";
 
 class Checkout extends Component{
-    //TODO ingridients fetch
     state = {
         ingridients: {
             bacon: 0,
@@ -15,7 +14,7 @@ class Checkout extends Component{
     };
 
     componentDidMount() {
-        const query = new URLSearchParams(this.props.location.search)
+        const query = new URLSearchParams(this.props.location.search);
         const ingredients = {};
 
         for (let param of query.entries())

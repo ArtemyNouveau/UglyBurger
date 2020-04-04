@@ -16,6 +16,6 @@ const order = (props) => {
             </ul>
         </div>
     )
-}
+};
 
 export default order
