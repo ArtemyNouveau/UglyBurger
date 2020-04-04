@@ -92,7 +92,7 @@ class ContactData extends Component {
                 },
                 validation: {
                     required: false,
-                    valid: true,
+                    valid: false,
                     typed: false
                 }
             }
@@ -100,10 +100,6 @@ class ContactData extends Component {
         loading: false,
         formValid: false
     };
-
-    checkValidity = (value, rules = (value) => (value.trim() !== '')) => (
-        rules(value)
-    );
 
     orderHandler = (event) => {
         event.preventDefault();
@@ -131,6 +127,10 @@ class ContactData extends Component {
             });
     };
 
+    checkValidity = (value, rules = (value) => (value.trim() !== '')) => (
+        rules(value)
+    );
+
     inputChanged = (event, key) => {
         console.log(event.target.value);
         const order = {...this.state.orderForm};
@@ -141,15 +141,13 @@ class ContactData extends Component {
         validity.typed = true;
         input.value = event.target.value;
         input.validation = validity;
-
-        let formValidity = this.state.formValid;
-        if (!formValidity) {
-            formValidity = Object.keys(this.state.orderForm).every((key) => (
-                this.state.orderForm[key].validation.valid || !this.state.orderForm[key].validation.required
-            ));
-        }
-
         order[key] = input;
+
+        const formValidity = Object.keys(order).every((key) => (
+                order[key].validation.valid || !order[key].validation.required
+            ));
+        console.log(formValidity);
+
         this.setState({
             orderForm: order,
             formValid: formValidity
