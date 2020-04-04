@@ -21,6 +21,10 @@
     box-sizing: border-box;
 }
 
+.InputElem > option {
+    width: 100%;
+}
+
 .InputElem:focus {
     outline: none;
     background-color: #ccc;

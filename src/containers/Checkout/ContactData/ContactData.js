@@ -48,6 +48,28 @@ class ContactData extends Component {
                     name: "town",
                     placeholder: "your town"
                 }
+            },
+            deliveryMethod: {
+                value: 'cheapest',
+                label: "deliveryMethod",
+                inputType: "select",
+                options: [
+                    {
+                        value: "fastest",
+                        elementConfig: {
+                            value: "fastest"
+                        }
+                    },
+                    {
+                        value: "cheapest",
+                        elementConfig: {
+                            value: "cheapest",
+                        }
+                    }
+                ],
+                elementConfig: {
+                    name: "delivery",
+                },
             }
         },
         loading: false
@@ -55,20 +77,16 @@ class ContactData extends Component {
 
     orderHandler = (event) => {
         event.preventDefault();
-        console.log(this.props.ingridients);
+        console.log(JSON.stringify(this.props.ingridients));
+        const customer = {};
+        Object.keys(this.state.orderForm).forEach((key) => (
+            customer[key] = this.state.orderForm[key].value
+        ));
 
         this.setState({loading: true});
         const order = {
             ingridients: this.props.ingridients,
-            customer: {
-                name: 'text',
-                address: {
-                    country: 'USA',
-                    town: '123124'
-                },
-                email: 'qwerty@mail.com'
-            },
-            delivery: 'fastest'
+            customer: customer
         };
 
         axios.post('/orders.json', order)
@@ -83,13 +101,26 @@ class ContactData extends Component {
             });
     };
 
+    inputChanged = (event, key) => {
+        console.log(event.target.value);
+        const order = {...this.state.orderForm};
+        const input = {...this.state.orderForm[key]};
+        input.value = event.target.value;
+
+        order[key] = input;
+        this.setState({orderForm: order})
+    };
+
     render() {
         const inputs = Object.keys(this.state.orderForm).map((key, i) => (
-            <Input key={key+i}
-                   id={key+'_'+i}
+            <Input key={key + i}
+                   id={key}
                    label={this.state.orderForm[key].label}
                    value={this.state.orderForm[key].value}
-                   elementConfig={this.state.orderForm[key].elementConfig}/>
+                   options={this.state.orderForm[key].options}
+                   inputType={this.state.orderForm[key].inputType}
+                   elementConfig={this.state.orderForm[key].elementConfig}
+                   changed={(event) => this.inputChanged(event, key)}/>
         ));
         return (
             <Fragment>
