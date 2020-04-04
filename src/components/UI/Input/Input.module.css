@@ -25,6 +25,14 @@
     width: 100%;
 }
 
+.InputElem.Valid {
+    border: 1px solid green;
+}
+
+.InputElem.Invalid {
+    border: 1px solid red;
+}
+
 .InputElem:focus {
     outline: none;
     background-color: #ccc;
