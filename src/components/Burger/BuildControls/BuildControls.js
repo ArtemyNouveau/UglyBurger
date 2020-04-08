@@ -1,14 +1,9 @@
 import React from "react";
 import Control from './Control/Control'
+
 import styles from './BuildControls.module.css'
 import buttonStyles from './orderButton.module.css'
 
-let o = {
-    bacon: 1,
-    cheese: 2,
-    meat: 2,
-    salad: 1,
-}
 const controls = [
     {label: 'Bacon', type: 'bacon'},
     {label: 'Cheese', type: 'cheese'},

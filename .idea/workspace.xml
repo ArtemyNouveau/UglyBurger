@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c7c9f928-74b7-4ec6-a97a-6b8f788c58a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Order/CheckoutSummary/CheckoutSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Order/CheckoutSummary/CheckoutSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -32,6 +39,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web3" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -80,7 +88,11 @@
       <workItem from="1585846784000" duration="44000" />
       <workItem from="1585857773947" duration="1190000" />
       <workItem from="1585912683272" duration="11523000" />
-      <workItem from="1586001029644" duration="13595000" />
+      <workItem from="1586001029644" duration="14290000" />
+      <workItem from="1586104090741" duration="27000" />
+      <workItem from="1586273426280" duration="1279000" />
+      <workItem from="1586288645701" duration="40000" />
+      <workItem from="1586342864238" duration="12269000" />
     </task>
     <servers />
   </component>
@@ -92,22 +104,26 @@
       <screen x="0" y="0" width="1920" height="1018" />
     </state>
     <state x="72" y="171" key="#Inspections/0.0.1920.1018@0.0.1920.1018" timestamp="1585835985113" />
-    <state width="936" height="245" key="GridCell.Tab.0.bottom" timestamp="1586004652722">
+    <state x="259" y="254" key="FileChooserDialogImpl" timestamp="1586348656908">
       <screen x="0" y="0" width="1920" height="1018" />
     </state>
-    <state width="936" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1018@0.0.1920.1018" timestamp="1586004652722" />
-    <state width="936" height="245" key="GridCell.Tab.0.center" timestamp="1586004652722">
+    <state x="259" y="254" key="FileChooserDialogImpl/0.0.1920.1018@0.0.1920.1018" timestamp="1586348656908" />
+    <state width="936" height="245" key="GridCell.Tab.0.bottom" timestamp="1586016498026">
       <screen x="0" y="0" width="1920" height="1018" />
     </state>
-    <state width="936" height="245" key="GridCell.Tab.0.center/0.0.1920.1018@0.0.1920.1018" timestamp="1586004652722" />
-    <state width="936" height="245" key="GridCell.Tab.0.left" timestamp="1586004652722">
+    <state width="936" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1018@0.0.1920.1018" timestamp="1586016498026" />
+    <state width="936" height="245" key="GridCell.Tab.0.center" timestamp="1586016498026">
       <screen x="0" y="0" width="1920" height="1018" />
     </state>
-    <state width="936" height="245" key="GridCell.Tab.0.left/0.0.1920.1018@0.0.1920.1018" timestamp="1586004652722" />
-    <state width="936" height="245" key="GridCell.Tab.0.right" timestamp="1586004652722">
+    <state width="936" height="245" key="GridCell.Tab.0.center/0.0.1920.1018@0.0.1920.1018" timestamp="1586016498026" />
+    <state width="936" height="245" key="GridCell.Tab.0.left" timestamp="1586016498026">
       <screen x="0" y="0" width="1920" height="1018" />
     </state>
-    <state width="936" height="245" key="GridCell.Tab.0.right/0.0.1920.1018@0.0.1920.1018" timestamp="1586004652722" />
+    <state width="936" height="245" key="GridCell.Tab.0.left/0.0.1920.1018@0.0.1920.1018" timestamp="1586016498026" />
+    <state width="936" height="245" key="GridCell.Tab.0.right" timestamp="1586016498026">
+      <screen x="0" y="0" width="1920" height="1018" />
+    </state>
+    <state width="936" height="245" key="GridCell.Tab.0.right/0.0.1920.1018@0.0.1920.1018" timestamp="1586016498026" />
     <state x="143" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586005922240">
       <screen x="0" y="0" width="1920" height="1018" />
     </state>

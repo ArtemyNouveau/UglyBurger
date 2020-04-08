@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from "react";
+import {connect} from "react-redux";
 import Button from "../../../components/UI/Button/Button";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import axios from "../../../axios-orders";
@@ -112,13 +113,14 @@ class ContactData extends Component {
         this.setState({loading: true});
         const order = {
             ingridients: this.props.ingridients,
+            price: this.props.totalPrice,
             customer: customer
         };
 
         axios.post('/orders.json', order)
             .then((response) => {
                 this.setState({loading: false, purchasing: false});
-                console.log(response);
+                console.log(response.data);
                 this.props.history.push("/")
             })
             .catch((err) => {
@@ -188,4 +190,11 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData
+const mapStateToProps = (state) => {
+    return {
+        ingridients: state.ingridients,
+        totalPrice: state.totalPrice
+    };
+};
+
+export default connect(mapStateToProps)(ContactData)
