@@ -46,7 +46,7 @@ class BurgerBuilder extends Component {
             <Fragment>
                 <Modal show={this.state.purchasing} closeModal={this.orderSwitcher}>
                     {
-                        this.props.ingridients && this.props.error ?
+                        this.props.ingridients && !this.props.error ?
                             <OrderSummary
                                 totalPrice={this.props.totalPrice}
                                 ingridients={this.props.ingridients}
@@ -56,7 +56,7 @@ class BurgerBuilder extends Component {
                     }
                 </Modal>
                 {
-                    this.props.ingridients && this.props.error  ?
+                    this.props.ingridients && !this.props.error ?
                         <Fragment>
                             <Burger ingridients={this.props.ingridients}/>
                             <BuildControls
@@ -77,9 +77,9 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        ingridients: state.ingridients,
-        totalPrice: state.totalPrice,
-        error: state.error
+        ingridients: state.burgerReducer.ingridients,
+        totalPrice: state.burgerReducer.totalPrice,
+        error: state.burgerReducer.error
     };
 };
 

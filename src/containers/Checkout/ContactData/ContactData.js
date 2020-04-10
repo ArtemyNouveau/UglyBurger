@@ -1,11 +1,14 @@
 import React, {Component, Fragment} from "react";
 import {connect} from "react-redux";
+import * as actions from '../../../store/actions/index'
 import Button from "../../../components/UI/Button/Button";
 import Spinner from "../../../components/UI/Spinner/Spinner";
-import axios from "../../../axios-orders";
+import axiosInstance from "../../../axios-orders";
 import Input from "../../../components/UI/Input/input";
+import withErrorHandler from "../../../HOC/withErrorHandler/withErrorHandler";
 
 import styles from './ContactData.module.css'
+import order from "../../../components/Order/Order";
 
 class ContactData extends Component {
     state = {
@@ -104,29 +107,29 @@ class ContactData extends Component {
 
     orderHandler = (event) => {
         event.preventDefault();
-        console.log(JSON.stringify(this.props.ingridients));
         const customer = {};
         Object.keys(this.state.orderForm).forEach((key) => (
             customer[key] = this.state.orderForm[key].value
         ));
 
-        this.setState({loading: true});
         const order = {
             ingridients: this.props.ingridients,
             price: this.props.totalPrice,
             customer: customer
         };
 
-        axios.post('/orders.json', order)
-            .then((response) => {
-                this.setState({loading: false, purchasing: false});
-                console.log(response.data);
-                this.props.history.push("/")
-            })
-            .catch((err) => {
-                this.setState({loading: false, purchasing: false});
-                alert(err)
-            });
+        this.props.onOrder(order)
+
+        // axiosInstance.post('/orders.json', order)
+        //     .then((response) => {
+        //         this.setState({loading: false, purchasing: false});
+        //         console.log(response.data);
+        //         this.props.history.push("/")
+        //     })
+        //     .catch((err) => {
+        //         this.setState({loading: false, purchasing: false});
+        //         alert(err)
+        //     });
     };
 
     checkValidity = (value, rules = (value) => (value.trim() !== '')) => (
@@ -171,7 +174,7 @@ class ContactData extends Component {
         ));
         return (
             <Fragment>
-                {this.state.loading ?
+                {this.props.loading ?
                     <Spinner/> :
                     <div className={styles.ContactData}>
                         <h4>Enter your contact data</h4>
@@ -190,11 +193,18 @@ class ContactData extends Component {
     }
 }
 
+const dispatchToProps = (dispatch) => {
+    return {
+        onOrder: (order) => dispatch(actions.purchase(order))
+    }
+};
+
 const mapStateToProps = (state) => {
     return {
-        ingridients: state.ingridients,
-        totalPrice: state.totalPrice
+        ingridients: state.burgerReducer.ingridients,
+        totalPrice: state.burgerReducer.totalPrice,
+        loading: state.orderReducer.loading
     };
 };
 
-export default connect(mapStateToProps)(ContactData)
+export default connect(mapStateToProps, dispatchToProps)(withErrorHandler(ContactData, axiosInstance))

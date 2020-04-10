@@ -35,4 +35,4 @@ export const initIngridient = () => {
                 dispatch(fetchIngridientsFailed(err))
             })
     }
-}
+};
