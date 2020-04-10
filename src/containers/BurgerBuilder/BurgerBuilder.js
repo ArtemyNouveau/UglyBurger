@@ -1,30 +1,24 @@
 import React, {Component, Fragment} from "react";
 import {connect} from 'react-redux'
+import WithErrorHandler from "../../HOC/withErrorHandler/withErrorHandler";
+import axiosInstance from "../../axios-orders";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from "../../components/UI/Spinner/Spinner";
-import withErrorHandler from "../../HOC/withErrorHandler/withErrorHandler";
-import axios from '../../axios-orders';
-import * as actionTypes from '../../store/actions';
+
+import * as actions from '../../store/actions/index';
 
 class BurgerBuilder extends Component {
     state = {
         purchasing: false,
         loading: false,
-        error: null
     };
 
-    // componentDidMount() {
-    //     axios.get('/Ingredients.json')
-    //         .then((response) => {
-    //             this.setState({ingridients: response.data, loading: false})
-    //         })
-    //         .catch((err) => {
-    //             this.setState({error: err})
-    //         })
-    // }
+    componentDidMount() {
+        this.props.onInitIngridients()
+    }
 
     orderSwitcher = () => {
         this.setState((prevState) => ({purchasing: !prevState.purchasing}))
@@ -52,17 +46,17 @@ class BurgerBuilder extends Component {
             <Fragment>
                 <Modal show={this.state.purchasing} closeModal={this.orderSwitcher}>
                     {
-                        this.state.loading || this.state.error ?
-                            <Spinner/> :
+                        this.props.ingridients && this.props.error ?
                             <OrderSummary
                                 totalPrice={this.props.totalPrice}
                                 ingridients={this.props.ingridients}
                                 purchaseCancel={this.orderSwitcher}
-                                purchaseContinue={this.purchaseContinue}/>
+                                purchaseContinue={this.purchaseContinue}/> :
+                            <Spinner/>
                     }
                 </Modal>
                 {
-                    !this.state.error && !this.state.loading ?
+                    this.props.ingridients && this.props.error  ?
                         <Fragment>
                             <Burger ingridients={this.props.ingridients}/>
                             <BuildControls
@@ -84,21 +78,17 @@ class BurgerBuilder extends Component {
 const mapStateToProps = (state) => {
     return {
         ingridients: state.ingridients,
-        totalPrice: state.totalPrice
+        totalPrice: state.totalPrice,
+        error: state.error
     };
 };
 
 const mapDispatchedToProps = (dispatch) => {
     return {
-        onIngridientAdded: (ingridient) => dispatch({
-            type: actionTypes.ADD_INGRIDIENT,
-            ingridient: ingridient,
-        }),
-        onIngridientRemved: (ingridient) => dispatch({
-            type: actionTypes.REMOVE_INGRIDIENT,
-            ingridient: ingridient,
-        })
+        onIngridientAdded: (ingridient) => dispatch(actions.addIngridient(ingridient)),
+        onIngridientRemved: (ingridient) => dispatch(actions.removeIngridient(ingridient)),
+        onInitIngridients: () => dispatch(actions.initIngridient())
     }
 };
 
-export default connect(mapStateToProps, mapDispatchedToProps)(withErrorHandler(BurgerBuilder, axios))
+export default connect(mapStateToProps, mapDispatchedToProps)(WithErrorHandler(BurgerBuilder, axiosInstance))

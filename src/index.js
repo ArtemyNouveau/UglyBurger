@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {Provider} from 'react-redux'
-import {createStore} from "redux";
+import {createStore, applyMiddleware, compose} from "redux";
+import thunk from "redux-thunk";
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom'
-import reducer from "./store/reducer";
+import burgerBuilder from "./store/reducers/burgerBuilder";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    burgerBuilder,
+    composeEnhancers(
+        applyMiddleware(thunk)
+    )
 );
 store.subscribe(() => {
     console.log("state upate:", store.getState())
