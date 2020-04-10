@@ -1,8 +1,9 @@
 import * as actionTypes from "../actions/actionTypes"
+import {updateObject} from "../utility";
 
 const initialState = {
     ingridients: null,
-    totalPrice: 4,
+    totalPrice: 0,
     error: false
 };
 
@@ -14,36 +15,38 @@ const INGRIDIENT_PRICES = {
 };
 
 const burgerBuilder = (state = initialState, action) => {
+    let update = {};
     switch (action.type) {
         case actionTypes.ADD_INGRIDIENT:
-            return {
-                ...state,
+            update = {
                 ingridients: {
                     ...state.ingridients,
                     [action.ingridient]: state.ingridients[action.ingridient] + 1
                 },
                 totalPrice: state.totalPrice + INGRIDIENT_PRICES[action.ingridient]
             };
+            return updateObject(state, update);
         case actionTypes.REMOVE_INGRIDIENT:
-            return {
-                ...state,
+            update = {
                 ingridients: {
                     ...state.ingridients,
                     [action.ingridient]: state.ingridients[action.ingridient] - 1,
                 },
                 totalPrice: state.totalPrice - INGRIDIENT_PRICES[action.ingridient]
             };
+            return updateObject(state, update);
         case actionTypes.SET_INGRIDIENT:
-            return {
-                ...state,
+            update = {
                 ingridients: action.ingridients,
+                totalPrice: 4,
                 error: false
             };
+            return updateObject(state, update);
         case actionTypes.FETCH_INGRIDIENTS_FAILED:
-            return {
-                ...state,
+            update = {
                 error: true
             };
+            return updateObject(state, update);
         default:
             return initialState
     }

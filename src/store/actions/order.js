@@ -33,3 +33,42 @@ export const purchase = (order) => {
             });
     }
 };
+
+
+export const fetchSuccess = (orders) => {
+    return {
+        type: actionTypes.FETCH_ORDERS_SUCCESS,
+        orders: orders
+    }
+};
+
+export const fetchFailed = (error) => {
+    return {
+        type: actionTypes.FETCH_ORDERS_FAILED,
+        error: error
+    }
+};
+
+export const fetchStart = () => {
+    return {
+        type: actionTypes.FETCH_ORDERS_START
+    }
+};
+
+export const fetchOrders = () => {
+    return dispatch => {
+        axiosInstance.get("/orders.json")
+            .then((response) => {
+                const orders = [];
+                for (let key in response.data)
+                    orders.push({
+                        id: key,
+                        ...response.data[key]
+                    });
+                dispatch(fetchSuccess(orders))
+            })
+            .catch((err) => {
+                fetchFailed(err)
+            })
+    }
+};

@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7c9f928-74b7-4ec6-a97a-6b8f788c58a8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/store/utility.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Orders/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Orders/Orders.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/burgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/burgerBuilder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/burgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/burgerBuilder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/order.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +99,7 @@
       <workItem from="1586342864238" duration="15143000" />
       <workItem from="1586515810636" duration="353000" />
       <workItem from="1586516238509" duration="2582000" />
-      <workItem from="1586518891801" duration="7451000" />
+      <workItem from="1586518891801" duration="12733000" />
     </task>
     <servers />
   </component>
@@ -140,6 +139,10 @@
       <screen x="0" y="0" width="1920" height="1018" />
     </state>
     <state width="936" height="245" key="GridCell.Tab.0.right/0.0.1920.1018@0.0.1920.1018" timestamp="1586521849284" />
+    <state x="136" y="239" key="run.anything.popup" timestamp="1586531924523">
+      <screen x="0" y="0" width="1920" height="1018" />
+    </state>
+    <state x="136" y="239" key="run.anything.popup/0.0.1920.1018@0.0.1920.1018" timestamp="1586531924523" />
     <state x="143" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586005922240">
       <screen x="0" y="0" width="1920" height="1018" />
     </state>

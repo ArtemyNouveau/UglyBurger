@@ -8,7 +8,6 @@ import Input from "../../../components/UI/Input/input";
 import withErrorHandler from "../../../HOC/withErrorHandler/withErrorHandler";
 
 import styles from './ContactData.module.css'
-import order from "../../../components/Order/Order";
 
 class ContactData extends Component {
     state = {
@@ -101,7 +100,7 @@ class ContactData extends Component {
                 }
             }
         },
-        loading: false,
+        // loading: false,
         formValid: false
     };
 
@@ -119,17 +118,6 @@ class ContactData extends Component {
         };
 
         this.props.onOrder(order)
-
-        // axiosInstance.post('/orders.json', order)
-        //     .then((response) => {
-        //         this.setState({loading: false, purchasing: false});
-        //         console.log(response.data);
-        //         this.props.history.push("/")
-        //     })
-        //     .catch((err) => {
-        //         this.setState({loading: false, purchasing: false});
-        //         alert(err)
-        //     });
     };
 
     checkValidity = (value, rules = (value) => (value.trim() !== '')) => (
