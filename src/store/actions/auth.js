@@ -22,6 +22,20 @@ export const authFail = (error) => {
     }
 }
 
+export const logout = () => {
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    }
+}
+
+export const checkAuthTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logout())
+        }, expirationTime*1000)
+    }
+}
+
 export const auth = (mail, password, isSignUp = true) => {
     return dispatch => {
         dispatch(authStart());
@@ -30,7 +44,6 @@ export const auth = (mail, password, isSignUp = true) => {
             password: password,
             returnSecureToken: true
         }
-        console.log(isSignUp)
 
         let url = isSignUp ?
             'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCiaxhQccPyOXq_mqmEeFIfOnrH1h8gRcU':
@@ -40,9 +53,10 @@ export const auth = (mail, password, isSignUp = true) => {
             .then(response => {
                 console.log(response.data)
                 dispatch(authSuccess(response.data.idToken, response.data.localId))
+                dispatch(checkAuthTimeout(response.data.expiresIn))
             })
             .catch(err => {
-                dispatch(authFail(err))
+                dispatch(authFail(err.response.data.error))
             })
     }
 }

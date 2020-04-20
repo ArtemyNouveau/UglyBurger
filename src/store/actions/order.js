@@ -22,9 +22,9 @@ export const purchaseStart = () => {
     }
 };
 
-export const purchase = (order) => {
+export const purchase = (order, token) => {
     return dispatch => {
-        axiosInstance.post('/orders.json', order)
+        axiosInstance.post('/orders.json?auth=' + token, order)
             .then((response) => {
                 dispatch(purchaseSuccess(response.data.name, order))
             })
@@ -55,9 +55,9 @@ export const fetchStart = () => {
     }
 };
 
-export const fetchOrders = () => {
+export const fetchOrders = (token) => {
     return dispatch => {
-        axiosInstance.get("/orders.json")
+        axiosInstance.get("/orders.json?auth=" + token)
             .then((response) => {
                 const orders = [];
                 for (let key in response.data)

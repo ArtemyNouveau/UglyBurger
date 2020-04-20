@@ -117,7 +117,7 @@ class ContactData extends Component {
             customer: customer
         };
 
-        this.props.onOrder(order)
+        this.props.onOrder(order, this.props.token)
     };
 
     checkValidity = (value, rules = (value) => (value.trim() !== '')) => (
@@ -183,7 +183,7 @@ class ContactData extends Component {
 
 const dispatchToProps = (dispatch) => {
     return {
-        onOrder: (order) => dispatch(actions.purchase(order))
+        onOrder: (order, token) => dispatch(actions.purchase(order, token))
     }
 };
 
@@ -191,7 +191,8 @@ const mapStateToProps = (state) => {
     return {
         ingridients: state.burgerReducer.ingridients,
         totalPrice: state.burgerReducer.totalPrice,
-        loading: state.orderReducer.loading
+        loading: state.orderReducer.loading,
+        token: state.authReducer.token
     };
 };
 

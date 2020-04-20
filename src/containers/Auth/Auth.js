@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import Input from "../../components/UI/Input/input";
 import Button from "../../components/UI/Button/Button";
+import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from '../../store/actions/index'
 
 import styles from './Auth.module.css'
 
-class Auth extends Component{
+class Auth extends Component {
     state = {
         orderForm: {
             email: {
@@ -103,15 +104,21 @@ class Auth extends Component{
                    changed={(event) => this.inputChanged(event, key)}/>
         ));
 
+        const errorMessage = this.props.error
+
         return (
             <div className={styles.Auth}>
-                <form onSubmit={this.submitHandler}>
-                    {inputs}
-                    <Button disabled={!this.state.formValid}
-                            btnType="Success">
-                        Submit
-                    </Button>
-                </form>
+                {this.props.loading ?
+                    <Spinner/> :
+                    <form onSubmit={this.submitHandler}>
+                        {inputs}
+                        {this.props.error ? <p>{this.props.error.message}</p> : ""}
+                        <Button disabled={!this.state.formValid}
+                                btnType="Success">
+                            {!this.state.isSignUp ? "signIn" : "signUp"}
+                        </Button>
+                    </form>
+                }
                 <Button btnType="Success" clicked={this.switchSignMethod}>
                     switch to {this.state.isSignUp ? "signIn" : "signUp"}
                 </Button>
@@ -126,4 +133,11 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Auth)
+const mapStateToProps = state => {
+    return {
+        loading: state.authReducer.loading,
+        error: state.authReducer.error
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)
