@@ -51,14 +51,8 @@ const burgerBuilder = (state = initialState, action) => {
                 error: true
             };
             return updateObject(state, update);
-        case actionTypes.AUTH_START:
-            return state;
-        case actionTypes.AUTH_FAIL:
-            return state;
-        case actionTypes.AUTH_SUCCESS:
-            return state;
         default:
-            return initialState
+            return state
     }
 };
 
