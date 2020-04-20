@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {Redirect} from 'react-router-dom'
 import Input from "../../components/UI/Input/input";
 import Button from "../../components/UI/Button/Button";
 import Spinner from "../../components/UI/Spinner/Spinner";
@@ -106,8 +107,10 @@ class Auth extends Component {
 
         const errorMessage = this.props.error
 
+        console.log(this.props.purchasing ? "/checkout" : "/");
         return (
             <div className={styles.Auth}>
+                {this.props.isAuth ? <Redirect to={this.props.purchasing ? "/checkout" : "/"}/> : null}
                 {this.props.loading ?
                     <Spinner/> :
                     <form onSubmit={this.submitHandler}>
@@ -136,7 +139,9 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         loading: state.authReducer.loading,
-        error: state.authReducer.error
+        error: state.authReducer.error,
+        isAuth: state.authReducer.token !== null,
+        purchasing: state.burgerReducer.purchasing
     }
 }
 

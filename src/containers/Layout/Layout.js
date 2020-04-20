@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from "react";
+import {connect} from "react-redux"
 import ToolBar from "../../components/Navigation/ToolBar/ToolBar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 
@@ -16,10 +17,11 @@ class Layaout extends Component {
     render() {
         return (
             <Fragment>
-                <SideDrawer
-                    show={this.state.showSideDrawer}
-                    switchDrawer={this.sideDrawerSwitcher}/>
-                <ToolBar switchDrawer={this.sideDrawerSwitcher}/>
+                <SideDrawer isAuth={this.props.isAuth}
+                            show={this.state.showSideDrawer}
+                            switchDrawer={this.sideDrawerSwitcher}/>
+                <ToolBar isAuth={this.props.isAuth}
+                         switchDrawer={this.sideDrawerSwitcher}/>
                 <main className={styles.content}>
                     {this.props.children}
                 </main>
@@ -29,4 +31,10 @@ class Layaout extends Component {
     }
 }
 
-export default Layaout
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.authReducer.token !== null
+    }
+}
+
+export default connect(mapStateToProps)(Layaout)

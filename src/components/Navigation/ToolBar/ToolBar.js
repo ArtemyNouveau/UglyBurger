@@ -12,7 +12,7 @@ const toolBar = (props) => (
             <DrawerToggle toggle={props.switchDrawer}>Menu</DrawerToggle>
             <Logo/>
             <nav className={styles.DesktopOnly}>
-                <NavigationItems/>
+                <NavigationItems isAuth={props.isAuth}/>
             </nav>
         </header>
     </Fragment>

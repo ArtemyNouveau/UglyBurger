@@ -4,7 +4,8 @@ import {updateObject} from "../utility";
 const initialState = {
     ingridients: null,
     totalPrice: 0,
-    error: false
+    error: false,
+    purchasing: false
 };
 
 const INGRIDIENT_PRICES = {
@@ -23,7 +24,8 @@ const burgerBuilder = (state = initialState, action) => {
                     ...state.ingridients,
                     [action.ingridient]: state.ingridients[action.ingridient] + 1
                 },
-                totalPrice: state.totalPrice + INGRIDIENT_PRICES[action.ingridient]
+                totalPrice: state.totalPrice + INGRIDIENT_PRICES[action.ingridient],
+                purchasing: true
             };
             return updateObject(state, update);
         case actionTypes.REMOVE_INGRIDIENT:
@@ -32,14 +34,16 @@ const burgerBuilder = (state = initialState, action) => {
                     ...state.ingridients,
                     [action.ingridient]: state.ingridients[action.ingridient] - 1,
                 },
-                totalPrice: state.totalPrice - INGRIDIENT_PRICES[action.ingridient]
+                totalPrice: state.totalPrice - INGRIDIENT_PRICES[action.ingridient],
+                purchasing: true
             };
             return updateObject(state, update);
         case actionTypes.SET_INGRIDIENT:
             update = {
                 ingridients: action.ingridients,
                 totalPrice: 4,
-                error: false
+                error: false,
+                purchasing: true
             };
             return updateObject(state, update);
         case actionTypes.FETCH_INGRIDIENTS_FAILED:
@@ -47,6 +51,12 @@ const burgerBuilder = (state = initialState, action) => {
                 error: true
             };
             return updateObject(state, update);
+        case actionTypes.AUTH_START:
+            return state;
+        case actionTypes.AUTH_FAIL:
+            return state;
+        case actionTypes.AUTH_SUCCESS:
+            return state;
         default:
             return initialState
     }

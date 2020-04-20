@@ -17,11 +17,16 @@ class BurgerBuilder extends Component {
     };
 
     componentDidMount() {
-        this.props.onInitIngridients()
+        if (!this.props.purchasing) this.props.onInitIngridients()
     }
 
-    orderSwitcher = () => {
-        this.setState((prevState) => ({purchasing: !prevState.purchasing}))
+    orderHandler = () => {
+        if (this.props.isAuth)
+            this.setState((prevState) => ({purchasing: !prevState.purchasing}))
+        else
+            this.props.history.push({
+                pathname: "/auth",
+            })
     };
 
     purchaseContinue = () => {
@@ -44,13 +49,13 @@ class BurgerBuilder extends Component {
         }
         return (
             <Fragment>
-                <Modal show={this.state.purchasing} closeModal={this.orderSwitcher}>
+                <Modal show={this.state.purchasing} closeModal={this.orderHandler}>
                     {
                         this.props.ingridients && !this.props.error ?
                             <OrderSummary
                                 totalPrice={this.props.totalPrice}
                                 ingridients={this.props.ingridients}
-                                purchaseCancel={this.orderSwitcher}
+                                purchaseCancel={this.orderHandler}
                                 purchaseContinue={this.purchaseContinue}/> :
                             <Spinner/>
                     }
@@ -65,7 +70,8 @@ class BurgerBuilder extends Component {
                                 disableInfo={disableInfo}
                                 purchasable={this.updatePurchasable(this.props.ingridients)}
                                 totalPrice={this.props.totalPrice}
-                                order={this.orderSwitcher}
+                                order={this.orderHandler}
+                                isAuth={this.props.isAuth}
                             />
                         </Fragment>
                         : <Spinner/>
@@ -79,7 +85,9 @@ const mapStateToProps = (state) => {
     return {
         ingridients: state.burgerReducer.ingridients,
         totalPrice: state.burgerReducer.totalPrice,
-        error: state.burgerReducer.error
+        error: state.burgerReducer.error,
+        isAuth: state.authReducer.token !== null,
+        purchasing: state.burgerReducer.purchasing
     };
 };
 
