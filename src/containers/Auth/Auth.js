@@ -107,10 +107,9 @@ class Auth extends Component {
 
         const errorMessage = this.props.error
 
-        console.log(this.props.purchasing ? "/checkout" : "/");
         return (
             <div className={styles.Auth}>
-                {this.props.isAuth ? <Redirect to={this.props.purchasing ? "/checkout" : "/"}/> : null}
+                {this.props.isAuth ? <Redirect to="/"/> : null}
                 {this.props.loading ?
                     <Spinner/> :
                     <form onSubmit={this.submitHandler}>
