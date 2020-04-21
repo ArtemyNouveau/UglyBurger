@@ -9,7 +9,8 @@ const sideDrawer = (props) => {
     return (
         <Fragment>
             <BackDrop show={props.show} close={props.switchDrawer}/>
-            <div className={[styles.SideDrawer, props.show ? styles.Open : styles.Close].join(' ')}>
+            <div className={[styles.SideDrawer, props.show ? styles.Open : styles.Close].join(' ')}
+                 onClick={props.switchDrawer}>
                 <div style={{height: 50}}>
                     <Logo/>
                 </div>

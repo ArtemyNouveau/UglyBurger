@@ -105,8 +105,6 @@ class Auth extends Component {
                    changed={(event) => this.inputChanged(event, key)}/>
         ));
 
-        const errorMessage = this.props.error
-
         return (
             <div className={styles.Auth}>
                 {this.props.isAuth ? <Redirect to="/"/> : null}
