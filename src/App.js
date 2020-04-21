@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux'
 import * as actions from './store/actions/index'
 import Layout from './containers/Layout/Layout'
@@ -23,7 +23,14 @@ class App extends Component {
                     <Switch>
                         <Route path="/Auth" component={Auth}/>
                         <Route path="/checkout" component={Checkout}/>
-                        <Route path="/orders" component={Orders}/>
+                        {this.props.isAuth ?
+                            <Route path="/checkout" component={Checkout}/> :
+                            null
+                        }
+                        {this.props.isAuth ?
+                            <Route path="/orders" component={Orders}/> :
+                            null
+                        }
                         <Route path="/logout" component={Logout}/>
                         <Route path="/" component={BurgerBuilder}/>
                     </Switch>
@@ -33,10 +40,16 @@ class App extends Component {
     };
 }
 
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.authReducer.token !== null
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         autoSignIn: () => dispatch(actions.authCheckState())
     }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
